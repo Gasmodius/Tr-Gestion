@@ -28,7 +28,7 @@ public class CtrlPanelUsuarios implements ActionListener{
                 CtrPanelBiblioteca ctr = new CtrPanelBiblioteca(Vistabiblio,usu);		
                 Vistabiblio.controlador(ctr);
 		
-                JFrame marcoBiblio = new JFrame("Ventana Usuario");
+                JFrame marcoBiblio = new JFrame("Biblioteca");
                 marcoBiblio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 marcoBiblio.setContentPane(Vistabiblio);
                 marcoBiblio.pack();
