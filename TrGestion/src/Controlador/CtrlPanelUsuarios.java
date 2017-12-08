@@ -6,6 +6,7 @@ import Vista.*;
 import Modelo.*;
 
 public class CtrlPanelUsuarios implements ActionListener{
+    
 	private PanelUsuarios vista;
         private Usuario usu;
         

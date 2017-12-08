@@ -1,12 +1,9 @@
-package pr4gestion;
+package Modelo;
 
 import java.util.*;
 
 
-public class Rol 
-{
-    private static String BD_SERVER = "localhost";
-    private static String BD_NAME = "GI1718";
+public class Rol {
     
     private String rolName;
     private String rolDes;
@@ -17,7 +14,7 @@ public class Rol
 	{
 		ArrayList<Rol> lista = new ArrayList<Rol>(); 
 		// Retorna una lista con todos los obejtos de la clase almacenados en la base de datos
-		BD miBD = new BD(BD_SERVER,BD_NAME);
+		BD miBD = new BD();
 					
 		for(Object[] tupla: miBD.Select("SELECT rolName FROM tRol;"))
 		{
@@ -29,7 +26,7 @@ public class Rol
     public Rol(String name)
     {
 		// Crea el objeto cargando sus valores de la base de datos
-      	BD miBD = new BD(BD_SERVER,BD_NAME);			
+      	BD miBD = new BD();			
         Object[] tupla = miBD.Select("SELECT * FROM tRol WHERE rolName='"+name+"';").get(0);
       		
               rolName = (String)tupla[0];
@@ -41,7 +38,7 @@ public class Rol
     public Rol(String name, String des, boolean adm)
     {
 		// Crea el objeto y lo inserta en la base de datos
-    	BD miBD = new BD(BD_SERVER,BD_NAME);			
+    	BD miBD = new BD();			
         miBD.Insert("INSERT INTO tRol VALUES ('" + name + "', '" + des + "', " + (adm ? 1: 0)+");");
         rolName = name;
         rolDes = des;        
@@ -57,7 +54,7 @@ public class Rol
     public void setRolName(String value) 
     { 
 		// Actualiza el atributo en memoria y en la base de datos
-    	BD miBD = new BD(BD_SERVER,BD_NAME);
+    	BD miBD = new BD();
     	miBD.Update("UPDATE tRol SET rolName = '" + value 
     			+ "' WHERE rolName ='"+ this.rolName + "';");
     	
@@ -73,7 +70,7 @@ public class Rol
     public void setRolDes(String value) 
     {
 		// Actualiza el atributo en memoria y en la base de datos
-    	BD miBD = new BD(BD_SERVER,BD_NAME);
+    	BD miBD = new BD();
     	miBD.Update("UPDATE tRol SET rolDes = '" + value 
     			+ "' WHERE rolName ='"+ this.rolName + "';");
     	
@@ -94,7 +91,7 @@ public class Rol
     	if (!admin) throw new Error("Rol sin permiso para establecer administradores.");
 
 		// Actualiza el atributo admin de other en memoria y en la base de datos
-    	BD miBD = new BD(BD_SERVER,BD_NAME);
+    	BD miBD = new BD();
     	miBD.Update("UPDATE tRol SET admin = " + (value?1:0) 
     			+ " WHERE rolName ='"+ other.getRolName() + "';");
     	

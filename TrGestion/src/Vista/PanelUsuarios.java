@@ -17,8 +17,7 @@ public class PanelUsuarios extends JPanel{
 	private JLabel pulsaciones;
 	private DefaultListModel <Usuario>modeloLista;
 	
-	public PanelUsuarios()
-	{
+	public PanelUsuarios() {
 		setLayout(new BorderLayout());
 		bLogin = new JButton(LOGIN);
 		JLabel etiqLogin = new JLabel("Identificacion de Usuario");

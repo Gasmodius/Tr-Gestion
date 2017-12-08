@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import Controlador.*;
 import Vista.*;
 
-public class TrGestion {
+public class TrGestionMain {
 
     /**
      * @param args the command line arguments
@@ -19,6 +19,7 @@ public class TrGestion {
 	ventana.setContentPane(vista);
 	ventana.pack();
 	ventana.setVisible(true);
+        ventana.setLocationRelativeTo(null);//se centra en la pantalla =D
     }
     
 }
