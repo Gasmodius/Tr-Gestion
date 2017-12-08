@@ -28,8 +28,8 @@ public class CtrLista implements ListSelectionListener {
 			{
 				Usuario u = (Usuario)o;
 				JFrame ventana = new JFrame("Usuario");
-				panelbiblio = new PanelBiblioteca();
-				//panelbiblio.MostrarUsuarios(u);
+				
+				
 				ventana.setContentPane(panelbiblio);
 				ventana.pack();
 				ventana.setVisible(true);
