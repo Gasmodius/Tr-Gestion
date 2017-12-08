@@ -4,9 +4,12 @@ import Modelo.Usuario;
 import Vista.PanelBiblioteca;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 
-public class CtrPanelBiblioteca implements ActionListener {
+public class CtrPanelBiblioteca implements ActionListener,ListSelectionListener {
     
         private Usuario user;
 	private PanelBiblioteca vista;
@@ -27,4 +30,11 @@ public class CtrPanelBiblioteca implements ActionListener {
         }
      
      }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        JList lista = (JList) e.getSource();
+	
+    }
+    
 }

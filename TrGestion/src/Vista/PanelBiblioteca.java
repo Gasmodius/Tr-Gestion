@@ -1,18 +1,28 @@
 package Vista;
 
+import Modelo.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionListener;
 
 public class PanelBiblioteca extends JPanel {
     
     public final static String INSERT="INSERT",BORRAR="BORRAR",ACTUALIZAR="ACTUALIZAS",SALIR="SALIR";
     private JButton Binsertar,Bborrar,Bactualizar,Bsalir;
     private JTextField TFtitulo,TFautor;
+    private JList<Usuario> libros;
+    private DefaultListModel <Usuario>modeloListaLibros;//Cambiar usuario por libros---------
+    private JList<Usuario> materias;
+    private DefaultListModel <Usuario>modeloListaMaterias;//Cambiar usuario por materias---------
     
     public PanelBiblioteca(){
         
@@ -25,18 +35,29 @@ public class PanelBiblioteca extends JPanel {
         TFautor=new JTextField(20);
         TFautor.setBorder(new TitledBorder("Autor:"));
         
+        libros = new JList<Usuario>();
+	modeloListaLibros = new DefaultListModel<Usuario>();
+	libros.setModel(modeloListaLibros);
+        materias = new JList<Usuario>();
+	modeloListaMaterias = new DefaultListModel<Usuario>();
+	materias.setModel(modeloListaMaterias);
+        
         //---------Contruccion de la Ventana-----------
         setLayout(new BorderLayout());
         
+        //-----------Paneles de la parte NORTE-------------
         JPanel panelnorte=new JPanel();
         add(panelnorte,BorderLayout.NORTH);
         
         JPanel panelnorteArriba=new JPanel();
-        //----------
+        panelnorteArriba.setLayout(new GridLayout(1,1));
+        panelnorteArriba.add(new JLabel("Materia"));
+        JScrollPane paneldeMaterias = new JScrollPane(materias);
+        panelnorteArriba.add(paneldeMaterias);
         panelnorte.add(panelnorteArriba,BorderLayout.NORTH);
         
-        JPanel panelnorteAbajo =new JPanel();
-        //------------
+        
+        JScrollPane panelnorteAbajo = new JScrollPane(libros);
         panelnorte.add(panelnorteAbajo,BorderLayout.SOUTH);
         
         //-----------Paneles de la parte SUR-------------
@@ -68,5 +89,19 @@ public class PanelBiblioteca extends JPanel {
 	Bactualizar.setActionCommand(ACTUALIZAR);
         Bsalir.addActionListener(ctrl);
 	Bsalir.setActionCommand(SALIR);
+    }
+    
+    public void controladorLista(ListSelectionListener ctrLista){
+	libros.addListSelectionListener(ctrLista);
+    }
+    
+    public void MostrarUsuarios(java.util.List<Usuario> lista){
+	for(Usuario u: lista){
+            modeloListaLibros.addElement(u);
+	}
+    }
+
+    public void limpiar() {
+	modeloListaLibros.clear();
     }
 }
