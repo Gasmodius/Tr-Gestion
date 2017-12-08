@@ -19,22 +19,15 @@ public class CtrlPanelUsuarios implements ActionListener{
          try{ 
             String command=e.getActionCommand();
             if(command.equals(vista.LOGIN)){
-                vista.limpiar();
-                vista.desactivaBotones();
+                
+               
                 usu=new Usuario(vista.getUser(), vista.getPwd());
                 vista.mensaje("Usuario Identificado");
-                
-                if(usu.getRol().Acceso("USUARIOS")){
-                    vista.ActivarUsuarios();
-                }
                 if(usu.getRol().Modificacion("USUARIOS")){
                     CtrLista ctrLista = new CtrLista(usu);
-                    vista.controladorLista(ctrLista);
+                    
                     
                 }
-            }else if(command.equals(vista.USUARIOS)){
-                vista.limpiar();
-                vista.MostrarUsuarios(usu.ListaUsuarios());
             }
          }catch(Error err){
              vista.mensaje(err.getMessage());
