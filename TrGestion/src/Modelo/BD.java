@@ -10,7 +10,7 @@ public class BD {
 	private Connection con ;
         
 	private static String BD_SERVER = "DESKTOP-2KKVKSR\\SQLEXPRESS";//"localhost";
-        private static String BD_NAME = "GI1718";
+        private static String BD_NAME = "TrabajoGI1718";
         
 	public BD(){
 		try{

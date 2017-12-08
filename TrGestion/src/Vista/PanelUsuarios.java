@@ -38,26 +38,11 @@ public class PanelUsuarios extends JPanel{
 		panelSuperior.add(user);
 		panelSuperior.add(bLogin);
 		panelSuperior.add(pwd);
-		
-		JPanel panelIzq = new JPanel();
-		panelIzq.setLayout(new GridLayout(3, 1));
-		
-		panelIzq.add(bUsuarios);
-		
-		JScrollPane panelCentral = new JScrollPane(resultado);
-		
-		pulsaciones = new JLabel("Pulsaciones");
-		pulsaciones.setHorizontalAlignment(SwingConstants.RIGHT);
-
-		add(pulsaciones, BorderLayout.SOUTH);
 		add(panelSuperior, BorderLayout.NORTH);
-		add(panelIzq, BorderLayout.WEST);
-		add(panelCentral, BorderLayout.CENTER);
 		desactivaBotones();
 
 	}
-	public void controlador(ActionListener ctrl) 
-	{
+	public void controlador(ActionListener ctrl) {
 		bLogin.addActionListener(ctrl);
 		bLogin.setActionCommand(LOGIN);
 		
@@ -65,56 +50,47 @@ public class PanelUsuarios extends JPanel{
 		bUsuarios.setActionCommand(USUARIOS);
 	}
 	
-	public void controladorLista(ListSelectionListener ctrLista)
-	{
+	public void controladorLista(ListSelectionListener ctrLista){
 		resultado.addListSelectionListener(ctrLista);
 	}
 
 
-	public void MostrarUsuarios(java.util.List<Usuario> lista)
-	{
+	public void MostrarUsuarios(java.util.List<Usuario> lista){
 		for(Usuario u: lista)
 		{
 			modeloLista.addElement(u);
 		}
 	}
 
-	public void limpiar() 
-	{
+	public void limpiar() {
 		modeloLista.clear();
 	}
 
-	public void mensaje(String msg) 
-	{
+	public void mensaje(String msg) {
 		// muestra un mensaje en azul
 		pulsaciones.setForeground(Color.blue);
 		pulsaciones.setText(msg);
 	}
 
-	public void alerta(String msg) 
-	{
+	public void alerta(String msg) {
 		// muestra un mensaje en rojo
 		pulsaciones.setForeground(Color.red);
 		pulsaciones.setText(msg);
 	}
 	
-	public String getUser()
-	{
+	public String getUser(){
 		return user.getText();
 	}
 	
-	public String getPwd()
-	{
+	public String getPwd(){
 		return new String(pwd.getPassword());
 	}
 	
-	public void desactivaBotones()
-	{
+	public void desactivaBotones(){
 		bUsuarios.setVisible(false);
 	}
 	
-	public void ActivarUsuarios()
-	{
+	public void ActivarUsuarios(){
 		bUsuarios.setVisible(true);
 	}
 }
