@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.Usuario;
+import Modelo.*;
 import Vista.PanelBiblioteca;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +18,7 @@ public class CtrPanelBiblioteca implements ActionListener,ListSelectionListener 
             user=u;
             this.vista = vista;
 	}
+        
 
 	public void actionPerformed(ActionEvent e){
          try{ 
@@ -33,8 +34,19 @@ public class CtrPanelBiblioteca implements ActionListener,ListSelectionListener 
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        
         JList lista = (JList) e.getSource();
-	
+        Object o= lista.getSelectedValue();
+        
+        if(o instanceof Materia){
+            Materia m= (Materia)o;
+            vista.MostrarLibros(Libro.ListaLibrosMateria(m.getID()));
+            
+        }else if(o instanceof Libro){
+            Libro l=(Libro)o;
+            vista.setTitulo(l.getTitulo());
+            vista.setAutor(l.getAutor());
+        }
     }
     
 }

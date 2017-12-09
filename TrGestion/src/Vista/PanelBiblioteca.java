@@ -36,13 +36,14 @@ public class PanelBiblioteca extends JPanel {
         TFautor=new JTextField(20);
         TFautor.setBorder(new TitledBorder("Autor:"));
         
-        libros = new JList<Libro>();
-	modeloListaLibros = new DefaultListModel<Libro>();
-	libros.setModel(modeloListaLibros);
         materias = new JList<Materia>();
 	modeloListaMaterias = new DefaultListModel<Materia>();
 	materias.setModel(modeloListaMaterias);
         MostrarMaterias(Materia.listaMaterias());
+        
+        libros = new JList<Libro>();
+	modeloListaLibros = new DefaultListModel<Libro>();
+	libros.setModel(modeloListaLibros);
         
         //---------Contruccion de la Ventana-----------
         setLayout(new BorderLayout());
@@ -51,12 +52,9 @@ public class PanelBiblioteca extends JPanel {
         JPanel panelnorte=new JPanel();
         add(panelnorte,BorderLayout.NORTH);
         
-        JPanel panelnorteArriba=new JPanel();
-        panelnorteArriba.setLayout(new GridLayout(1,1));
-        panelnorteArriba.add(new JLabel("Materia"));
+        panelnorte.add(new JLabel("Materia"),BorderLayout.WEST);
         JScrollPane paneldeMaterias = new JScrollPane(materias);
-        panelnorteArriba.add(paneldeMaterias);
-        panelnorte.add(panelnorteArriba,BorderLayout.NORTH);
+        panelnorte.add(paneldeMaterias,BorderLayout.EAST);
         
         
         JScrollPane panelnorteAbajo = new JScrollPane(libros);
@@ -91,10 +89,9 @@ public class PanelBiblioteca extends JPanel {
 	Bactualizar.setActionCommand(ACTUALIZAR);
         Bsalir.addActionListener(ctrl);
 	Bsalir.setActionCommand(SALIR);
-    }
-    
-    public void controladorLista(ListSelectionListener ctrLista){
-	libros.addListSelectionListener(ctrLista);
+        
+        libros.addListSelectionListener((ListSelectionListener) ctrl);
+        materias.addListSelectionListener((ListSelectionListener) ctrl);
     }
     
     public void MostrarMaterias(List<Materia> lista){
@@ -105,5 +102,28 @@ public class PanelBiblioteca extends JPanel {
 
     public void limpiarMaterias() {
 	modeloListaMaterias.clear();
+    }
+    
+    public void MostrarLibros(List<Libro> lista){
+	modeloListaLibros.clear();
+        for(Libro u: lista){
+            modeloListaLibros.addElement(u);
+	}
+    }
+    
+    public void setTitulo(String i){
+        TFtitulo.setText(i);
+    }
+    
+    public String getTitulo(){
+        return TFtitulo.getText();
+    }
+    
+    public void setAutor(String i){
+        TFautor.setText(i);
+    }
+
+    public String getAutor(){
+        return TFautor.getText();
     }
 }

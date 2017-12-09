@@ -47,7 +47,7 @@ public class Libro {
 		
 		for(Object[] tupla : miBD.Select("SELECT ID FROM tLibro WHERE ID_Materia = '"+idMateria+"' ;")) {
 			
-			lista.add(new Libro( (Integer) tupla[0] ) );
+                    lista.add(new Libro( (Integer) tupla[0] ) );
 		}
 		return lista;
 	}

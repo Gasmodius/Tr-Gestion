@@ -20,9 +20,9 @@ public class CtrlPanelUsuarios implements ActionListener{
          try{ 
             String command=e.getActionCommand();
             if(command.equals(vista.LOGIN)){
-
+                
+                vista.mensaje("Cargando...");
                 Usuario usu=new Usuario(vista.getUser(), vista.getPwd());
-                vista.mensaje("Usuario Identificado");
                 
                 PanelBiblioteca Vistabiblio = new PanelBiblioteca();
                 CtrPanelBiblioteca ctr = new CtrPanelBiblioteca(Vistabiblio,usu);		
