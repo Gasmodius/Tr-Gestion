@@ -32,7 +32,7 @@ public class PanelUsuarios extends JPanel{
 		panelSuperior.add(pwd);
 		add(panelSuperior, BorderLayout.NORTH);
                 
-                textplace = new JLabel("");
+                textplace = new JLabel(" ");
 		textplace.setHorizontalAlignment(SwingConstants.RIGHT);
                 add(textplace,BorderLayout.SOUTH);
 

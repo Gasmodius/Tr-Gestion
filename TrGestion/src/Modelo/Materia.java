@@ -10,6 +10,11 @@ public class Materia {
 	private String Nombre;
 //----- CONSTRUCTORES
 	
+        public Materia(String i,String materiaName) {
+            ID_Materia=i;
+            Nombre=materiaName;
+        }
+        /*
 	public Materia(String materiaName) {
 		//CREA EL OBJETO A PARTIR DEL NOMBRE Y SUMANDO 1 AL ID MAS ALTO QUE RECUPERA DE LA BD (+= INCREMENTA EL INDICE INCREMENTANDO EL VALOR ASCII)
 		BD miBD = new BD();
@@ -17,7 +22,7 @@ public class Materia {
 		ID_Materia += ((String)miBD.SelectEscalar("SELECT MAX(ID_Materia) FROM tMateria;"));
 		Nombre = materiaName;
 		
-	}
+	}*/
 //------- METODOS
 	public static String ID_Materia(String materia) {
 		//DADO UN NOMBRE DEVUELVE SU ID, SI NO ESTO LO CREA
@@ -25,16 +30,17 @@ public class Materia {
 		
 		String id= null;
 		//POR SI HAY VARIOS CON EL MISMO NOMBRE, SE QUEDA CON EL ULTIMO ID
-		for(Object[] tupla: miBD.Select("SELECT ID_Materia FROM tLibro WHERE NOMBRE = '"+materia+"' ;"))
+		for(Object[] tupla: miBD.Select("SELECT ID_Materia FROM tMateria WHERE NOMBRE = '"+materia+"' ;"))
 		{
 			id = ( (String)tupla[0] );
 		}
 		//SI LA CONSULTA NO LO ENCUENTRA CREA EL OBJETO A PARTIR DEL NOMBRE
 		if(id == null) {
-                    
-			Materia mat = new Materia(materia);
-                        id = mat.getID();
-                   
+                    throw new RuntimeException("Materia: "+materia+" no existe");
+                           
+			//Materia mat = new Materia(materia);
+                        //id = mat.getID();
+                        
 		}
 			
 		return id;
@@ -42,10 +48,13 @@ public class Materia {
 	public static List<Materia> listaMaterias(){
             //DEVUELVE UNA LISTA CON TODAS LAS MATERIAS DE LA BASE DE DATOS
             
-            ArrayList<Materia> lista = new ArrayList<>();
+            ArrayList<Materia> lista = new ArrayList<Materia>();
             BD miBD = new BD();
-            for(Object[] tupla: miBD.Select("SELECT ID_Materia FROM tMateria")){
-                lista.add(new Materia((String)tupla[0]));
+            for(Object[] tupla: miBD.Select("SELECT * FROM tMateria")){
+                
+                String id = (String) tupla[0]; 
+                String name = (String)tupla[1];
+                lista.add(new Materia(id,name));
             }
         return lista;
         }
@@ -65,4 +74,5 @@ public class Materia {
             return this.ID_Materia;
 	}
 
+        public String toString(){return this.Nombre;}
 }

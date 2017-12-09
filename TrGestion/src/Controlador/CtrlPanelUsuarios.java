@@ -41,7 +41,9 @@ public class CtrlPanelUsuarios implements ActionListener{
                 
             }
          }catch(Error err){
-             vista.mensaje(err.getMessage());
+            vista.mensaje(err.getMessage());
+        }catch(IndexOutOfBoundsException err){
+            vista.mensaje("Introduzca un usuario y contraseña");
         }
      
      }

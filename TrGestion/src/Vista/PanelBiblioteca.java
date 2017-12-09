@@ -4,6 +4,7 @@ import Modelo.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,10 +20,10 @@ public class PanelBiblioteca extends JPanel {
     public final static String INSERT="INSERT",BORRAR="BORRAR",ACTUALIZAR="ACTUALIZAS",SALIR="SALIR";
     private JButton Binsertar,Bborrar,Bactualizar,Bsalir;
     private JTextField TFtitulo,TFautor;
-    private JList<Usuario> libros;
-    private DefaultListModel <Usuario>modeloListaLibros;//Cambiar usuario por libros---------
-    private JList<Usuario> materias;
-    private DefaultListModel <Usuario>modeloListaMaterias;//Cambiar usuario por materias---------
+    private JList<Libro> libros;
+    private DefaultListModel <Libro>modeloListaLibros;
+    private JList<Materia> materias;
+    private DefaultListModel <Materia>modeloListaMaterias;
     
     public PanelBiblioteca(){
         
@@ -35,12 +36,13 @@ public class PanelBiblioteca extends JPanel {
         TFautor=new JTextField(20);
         TFautor.setBorder(new TitledBorder("Autor:"));
         
-        libros = new JList<Usuario>();
-	modeloListaLibros = new DefaultListModel<Usuario>();
+        libros = new JList<Libro>();
+	modeloListaLibros = new DefaultListModel<Libro>();
 	libros.setModel(modeloListaLibros);
-        materias = new JList<Usuario>();
-	modeloListaMaterias = new DefaultListModel<Usuario>();
+        materias = new JList<Materia>();
+	modeloListaMaterias = new DefaultListModel<Materia>();
 	materias.setModel(modeloListaMaterias);
+        MostrarMaterias(Materia.listaMaterias());
         
         //---------Contruccion de la Ventana-----------
         setLayout(new BorderLayout());
@@ -95,13 +97,13 @@ public class PanelBiblioteca extends JPanel {
 	libros.addListSelectionListener(ctrLista);
     }
     
-    public void MostrarUsuarios(java.util.List<Usuario> lista){
-	for(Usuario u: lista){
-            modeloListaLibros.addElement(u);
+    public void MostrarMaterias(List<Materia> lista){
+	for(Materia u: lista){
+            modeloListaMaterias.addElement(u);
 	}
     }
 
-    public void limpiar() {
-	modeloListaLibros.clear();
+    public void limpiarMaterias() {
+	modeloListaMaterias.clear();
     }
 }
