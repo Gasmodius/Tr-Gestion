@@ -18,7 +18,7 @@ public class Libro {
 		autor = aut;
 		ID= ((Integer)miBD.SelectEscalar("SELECT MAX(ID) FROM tLibro;"))+1;
 		ID_Materia = idm;
-                miBD.Insert("INSERT INTO tLibro VALUES ("+ID+",'"+tit+"',  '"+aut+"', '"+materiaName+"' );");
+                miBD.Insert("INSERT INTO tLibro VALUES ("+ID+",'"+tit+"',  '"+aut+"', '"+idm+"' );");
 	}
 	
 	public Libro(int id) {
@@ -52,9 +52,9 @@ public class Libro {
 		return lista;
 	}
         
-        public void borrarLibro(int idLibro){
+        public void borrarLibro(){
             BD miBD = new BD();
-            miBD.Delete("DELETE FROM tlibro WHERE ID ="+ idLibro + ";");
+            miBD.Delete("DELETE FROM tlibro WHERE ID ="+ this.ID + ";");
             this.ID = -1;
             this.autor = null;
             this.ID_Materia = null;

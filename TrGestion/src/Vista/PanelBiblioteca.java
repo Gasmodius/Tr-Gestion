@@ -80,7 +80,9 @@ public class PanelBiblioteca extends JPanel {
         panelsur.add(panelsurAbajo,BorderLayout.SOUTH);   
     }
     
-    public void controlador(ActionListener ctrl) {
+
+
+	public void controlador(ActionListener ctrl) {
 	Binsertar.addActionListener(ctrl);
 	Binsertar.setActionCommand(INSERT);
         Bborrar.addActionListener(ctrl);
@@ -126,4 +128,26 @@ public class PanelBiblioteca extends JPanel {
     public String getAutor(){
         return TFautor.getText();
     }
+    
+    public Materia getMaterias() {
+		return materias.getSelectedValue();
+	}
+
+	public void setMaterias(JList<Materia> materias) {
+		this.materias = materias;
+	}
+
+
+
+	public Libro getLibros() {
+		return libros.getSelectedValue();
+	}
+
+
+
+	public void setLibros(JList<Libro> libros) {
+		this.libros = libros;
+	}
+	
+	
 }
