@@ -2,11 +2,9 @@ package Controlador;
 
 import Modelo.*;
 import Vista.PanelBiblioteca;
-
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -30,14 +28,8 @@ public class CtrPanelBiblioteca implements ActionListener,ListSelectionListener 
          try{ 
             String command=e.getActionCommand();
             if(command.equals(vista.SALIR)){
-            	JFrame ventana = new JFrame("Ventana Usuario");
-            	ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            	ventana.setContentPane(vista);
-            	ventana.pack();
-            	ventana.setVisible(true);
-                ventana.setLocationRelativeTo(null);
-                Window w = SwingUtilities.getWindowAncestor(vista);
-                w.dispose();
+                System.exit(0);
+                
             }
             if(command.equals(vista.BORRAR)){
             	//comprobar que es administrador
