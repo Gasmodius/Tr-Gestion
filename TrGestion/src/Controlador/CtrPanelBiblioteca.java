@@ -27,28 +27,36 @@ public class CtrPanelBiblioteca implements ActionListener,ListSelectionListener 
             if(command.equals(vista.SALIR)){
                 System.exit(0);
                 
-            }
-            if(command.equals(vista.BORRAR)){
+            }else if(command.equals(vista.BORRAR)){
             	//comprobar que es administrador------------------------
             	vista.getLibro().borrarLibro();
                 vista.MostrarLibros(Libro.ListaLibrosMateria(Materia.ID_Materia(vista.getMateria().getNombre())));
             	JOptionPane.showMessageDialog(null, "Libro borrado");
                 
-            }
-            if(command.equals(vista.INSERT)){
+            }else if(command.equals(vista.INSERT)){
             	//comprobar que es administrador--------------------------
                 //hace falta comprobar que hay materias seleccionadas y cosas-----------------------------
             	Libro l = new Libro(vista.getTitulo(), vista.getAutor(), vista.getMateria().getNombre());
             	vista.MostrarLibros(Libro.ListaLibrosMateria(Materia.ID_Materia(vista.getMateria().getNombre())));
                 JOptionPane.showMessageDialog(null, "Libro introducido");
-            }
-            if(command.equals(vista.ACTUALIZAR)){
-            	//comprobar que es administrador
+                
+            }else if(command.equals(vista.ACTUALIZAR)){
+            	//comprobar que es administrador--------------------------
+                //hace falta comprobar que hay materias seleccionadas y cosas-----------------------------
+            	vista.getLibro().setTitulo(vista.getTitulo());
+                vista.getLibro().setAutor(vista.getAutor());
+            	vista.MostrarLibros(Libro.ListaLibrosMateria(Materia.ID_Materia(vista.getMateria().getNombre())));
+                JOptionPane.showMessageDialog(null, "Libro Modificado");
+                
+            }else if(command.equals(vista.LIMPIAR)){
+            	vista.setAutor("");
+                vista.setTitulo("");
+                //Deseleccionar los libros--------------------------
             }
             
             
          }catch(Error err){
-            //vista.mensaje(err.getMessage());
+             JOptionPane.showMessageDialog(null, err.getMessage());
         }
      
      }

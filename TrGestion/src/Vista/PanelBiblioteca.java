@@ -17,8 +17,8 @@ import javax.swing.event.ListSelectionListener;
 
 public class PanelBiblioteca extends JPanel {
     
-    public final static String INSERT="INSERT",BORRAR="BORRAR",ACTUALIZAR="ACTUALIZAS",SALIR="SALIR";
-    private JButton Binsertar,Bborrar,Bactualizar,Bsalir;
+    public final static String INSERT="INSERT",BORRAR="BORRAR",ACTUALIZAR="ACTUALIZAS",SALIR="SALIR",LIMPIAR="LIMPIAR";
+    private JButton Binsertar,Bborrar,Bactualizar,Bsalir,Blimpiar;
     private JTextField TFtitulo,TFautor;
     private JList<Libro> libros;
     private DefaultListModel <Libro>modeloListaLibros;
@@ -31,6 +31,7 @@ public class PanelBiblioteca extends JPanel {
         Bborrar=new JButton("Borrar");
         Bactualizar=new JButton("Actualizar");
         Bsalir=new JButton("Salir");
+        Blimpiar=new JButton("Limpiar");
         TFtitulo=new JTextField(20);
         TFtitulo.setBorder(new TitledBorder("Titulo:"));
         TFautor=new JTextField(20);
@@ -58,7 +59,7 @@ public class PanelBiblioteca extends JPanel {
         
         
         JScrollPane panelnorteAbajo = new JScrollPane(libros);
-        panelnorte.add(panelnorteAbajo,BorderLayout.SOUTH);
+        add(panelnorteAbajo,BorderLayout.CENTER);
         
         //-----------Paneles de la parte SUR-------------
         JPanel panelsur=new JPanel();
@@ -72,10 +73,11 @@ public class PanelBiblioteca extends JPanel {
         panelsur.add(panelsurArriba,BorderLayout.NORTH);
         
         JPanel panelsurAbajo =new JPanel();
-        panelsurArriba.setLayout(new GridLayout(4,1));
+        panelsurArriba.setLayout(new GridLayout(5,1));
         panelsurAbajo.add(Binsertar);
         panelsurAbajo.add(Bborrar);
         panelsurAbajo.add(Bactualizar);
+        panelsurAbajo.add(Blimpiar);
         panelsurAbajo.add(Bsalir);
         panelsur.add(panelsurAbajo,BorderLayout.SOUTH);   
     }
@@ -91,6 +93,8 @@ public class PanelBiblioteca extends JPanel {
 	Bactualizar.setActionCommand(ACTUALIZAR);
         Bsalir.addActionListener(ctrl);
 	Bsalir.setActionCommand(SALIR);
+        Blimpiar.addActionListener(ctrl);
+	Blimpiar.setActionCommand(LIMPIAR);
         
         libros.addListSelectionListener((ListSelectionListener) ctrl);
         materias.addListSelectionListener((ListSelectionListener) ctrl);
@@ -102,8 +106,10 @@ public class PanelBiblioteca extends JPanel {
 	}
     }
 
-    public void limpiarMaterias() {
-	modeloListaMaterias.clear();
+    public void limpiarLibros() {
+        try{
+	modeloListaLibros.get(-1);
+        }catch(IndexOutOfBoundsException er){}
     }
     
     public void MostrarLibros(List<Libro> lista){

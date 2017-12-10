@@ -13,12 +13,11 @@ public class Libro {
 	public Libro(String tit, String aut, String materiaName){
 		BD miBD = new BD();
 		
-		String idm = Materia.ID_Materia(materiaName);
+		ID_Materia= Materia.ID_Materia(materiaName);
 		titulo = tit;
 		autor = aut;
-		ID= ((Integer)miBD.SelectEscalar("SELECT MAX(ID) FROM tLibro;"))+1;
-		ID_Materia = idm;
-                miBD.Insert("INSERT INTO tLibro VALUES ("+ID+",'"+tit+"',  '"+aut+"', '"+idm+"' );");
+		ID = ((Integer)miBD.SelectEscalar("SELECT MAX(ID) FROM tLibro;"))+1;
+                miBD.Insert("INSERT INTO tLibro VALUES ("+ID+",'"+titulo+"','"+autor+"','"+ID_Materia+"');");
 	}
 	
 	public Libro(int id) {
