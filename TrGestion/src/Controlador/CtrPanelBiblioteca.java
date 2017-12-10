@@ -14,10 +14,12 @@ public class CtrPanelBiblioteca implements ActionListener,ListSelectionListener 
     
         private Usuario user;
 	private PanelBiblioteca vista;
+        private boolean libroselect;
         
 	public CtrPanelBiblioteca(PanelBiblioteca vista,Usuario u){
             user=u;
             this.vista = vista;
+            libroselect=false;
 	}
         
 
@@ -27,36 +29,36 @@ public class CtrPanelBiblioteca implements ActionListener,ListSelectionListener 
             if(command.equals(vista.SALIR)){
                 System.exit(0);
                 
-            }else if(command.equals(vista.BORRAR)){
-            	//comprobar que es administrador------------------------
+            }else if(command.equals(vista.LIMPIAR)){
+            	vista.setAutor("");
+                vista.setTitulo("");
+                libroselect=false;
+                //Deseleccionar los libros--------------------------
+                
+            }else if(user.getRol().getAdmin()){
+                if(libroselect){
+                if(command.equals(vista.BORRAR)){
             	vista.getLibro().borrarLibro();
                 vista.MostrarLibros(Libro.ListaLibrosMateria(Materia.ID_Materia(vista.getMateria().getNombre())));
             	JOptionPane.showMessageDialog(null, "Libro borrado");
                 
-            }else if(command.equals(vista.INSERT)){
-            	//comprobar que es administrador--------------------------
-                //hace falta comprobar que hay materias seleccionadas y cosas-----------------------------
+                }else if(command.equals(vista.INSERT)){
             	Libro l = new Libro(vista.getTitulo(), vista.getAutor(), vista.getMateria().getNombre());
             	vista.MostrarLibros(Libro.ListaLibrosMateria(Materia.ID_Materia(vista.getMateria().getNombre())));
                 JOptionPane.showMessageDialog(null, "Libro introducido");
                 
-            }else if(command.equals(vista.ACTUALIZAR)){
-            	//comprobar que es administrador--------------------------
-                //hace falta comprobar que hay materias seleccionadas y cosas-----------------------------
+                }else if(command.equals(vista.ACTUALIZAR)){
             	vista.getLibro().setTitulo(vista.getTitulo());
                 vista.getLibro().setAutor(vista.getAutor());
             	vista.MostrarLibros(Libro.ListaLibrosMateria(Materia.ID_Materia(vista.getMateria().getNombre())));
-                JOptionPane.showMessageDialog(null, "Libro Modificado");
+                JOptionPane.showMessageDialog(null, "Libro Modificado");  
+                }
                 
-            }else if(command.equals(vista.LIMPIAR)){
-            	vista.setAutor("");
-                vista.setTitulo("");
-                //Deseleccionar los libros--------------------------
-            }
-            
+            }else{JOptionPane.showMessageDialog(null,"No has seleccionado ningun libro");}
+            }else{JOptionPane.showMessageDialog(null,"No tienes permiso para hacer esa accion");}
             
          }catch(Error err){
-             JOptionPane.showMessageDialog(null, err.getMessage());
+            JOptionPane.showMessageDialog(null, err.getMessage());
         }
      
      }
@@ -75,6 +77,7 @@ public class CtrPanelBiblioteca implements ActionListener,ListSelectionListener 
             Libro l=(Libro)o;
             vista.setTitulo(l.getTitulo());
             vista.setAutor(l.getAutor());
+            libroselect=true;
         }
     }
     
