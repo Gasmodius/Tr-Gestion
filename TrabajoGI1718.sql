@@ -169,6 +169,9 @@ GO
 INSERT INTO tUsuario VALUES('admin', 'admin','administrador');
 INSERT INTO tUsuario VALUES('user', 'user','usuario');
 INSERT INTO tUsuario VALUES('inv', 'inv','invitado');
+INSERT INTO tUsuario VALUES('aa' , 'aa', 'administrador');
+INSERT INTO tUsuario VALUES('bb', 'bb', 'usuario');
+INSERT INTO tUsuario VALUES('cc', 'cc', 'invitado');
 GO
 
 DELETE tPermiso;
@@ -191,47 +194,47 @@ Delete FROM tMateria;
 GO
 
 INSERT INTO tMateria VALUES('A',' Artes');
-INSERT INTO tMateria VALUES('B',' BiografÌa e historias reales');
+INSERT INTO tMateria VALUES('B',' Biograf√≠a e historias reales');
 INSERT INTO tMateria VALUES('C',' Lengua');
 INSERT INTO tMateria VALUES('D',' Literatura y estudios literarios');
-INSERT INTO tMateria VALUES('E',' EnseÒanza de la lengua inglesa');
-INSERT INTO tMateria VALUES('F',' FicciÛn y temas afines');
-INSERT INTO tMateria VALUES('G',' Consulta, informaciÛn y temas interdisciplinarios');
-INSERT INTO tMateria VALUES('H',' Humanidades (historia, arqueologÌa, filosofÌa, religiÛn)');
+INSERT INTO tMateria VALUES('E',' Ense√±anza de la lengua inglesa');
+INSERT INTO tMateria VALUES('F',' Ficci√≥n y temas afines');
+INSERT INTO tMateria VALUES('G',' Consulta, informaci√≥n y temas interdisciplinarios');
+INSERT INTO tMateria VALUES('H',' Humanidades (historia, arqueolog√≠a, filosof√≠a, religi√≥n)');
 INSERT INTO tMateria VALUES('J',' Sociedad y ciencias sociales');
-INSERT INTO tMateria VALUES('K',' EconomÌa, finanzas, empresa y gestiÛn');
+INSERT INTO tMateria VALUES('K',' Econom√≠a, finanzas, empresa y gesti√≥n');
 INSERT INTO tMateria VALUES('L',' Derecho');
 INSERT INTO tMateria VALUES('M',' Medicina');
-INSERT INTO tMateria VALUES('P',' Matem·ticas y ciencia');
-INSERT INTO tMateria VALUES('R',' Ciencias de la tierra, geografÌa, medioambiente, planificaciÛn');
-INSERT INTO tMateria VALUES('T',' TecnologÌa, ingenierÌa, agricultura');
-INSERT INTO tMateria VALUES('U',' ComputaciÛn e inform·tica');
+INSERT INTO tMateria VALUES('P',' Matem√°ticas y ciencia');
+INSERT INTO tMateria VALUES('R',' Ciencias de la tierra, geograf√≠a, medioambiente, planificaci√≥n');
+INSERT INTO tMateria VALUES('T',' Tecnolog√≠a, ingenier√≠a, agricultura');
+INSERT INTO tMateria VALUES('U',' Computaci√≥n e inform√°tica');
 INSERT INTO tMateria VALUES('V',' Salud y desarrollo personal');
 INSERT INTO tMateria VALUES('W',' Estilo de vida, deporte y ocio');
-INSERT INTO tMateria VALUES('Y',' Infantiles, juveniles y did·cticos');
+INSERT INTO tMateria VALUES('Y',' Infantiles, juveniles y did√°cticos');
 
 GO
 
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('CÛdigo limpio: manual de estilo para el desarrollo ?gil de software', 'Robert C. Martin','U');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('No me hagas pensar: una aproximaciÛn a la usabilidad en la web', 'Steve Krug','U');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('El Libro Negro del Programador: cÛmo conseguir una carrera de Èxito desarrollando software y cÛmo evitar los errores habituales', 'Rafael GÛmez Blanes','U');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('C√≥digo limpio: manual de estilo para el desarrollo ?gil de software', 'Robert C. Martin','U');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('No me hagas pensar: una aproximaci√≥n a la usabilidad en la web', 'Steve Krug','U');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('El Libro Negro del Programador: c√≥mo conseguir una carrera de √©xito desarrollando software y c√≥mo evitar los errores habituales', 'Rafael G√≥mez Blanes','U');
 INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Code Complete', 'Steve McConnell','U');
 INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Coders at Work', 'Peter Seibel','U');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('La entrevista perfecta: las claves para superar con Èxito el proceso de selecciÛn de las mejores empresas de IT', 'Gayle Laakmann Mcdowell','U');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('IngenierÌa de Software: un enfoque pr·ctico', 'Roger S. Pressman','U');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('La entrevista perfecta: las claves para superar con √©xito el proceso de selecci√≥n de las mejores empresas de IT', 'Gayle Laakmann Mcdowell','U');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Ingenier√≠a de Software: un enfoque pr√°ctico', 'Roger S. Pressman','U');
 INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('The Mythical Man-Month: Essays on Software Engineering', 'por Fred Brooks','U');
 INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('The Pragmatic Programmer', 'Andrew Hunt y David Thomas','U');
 INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Soft Skills: the software developers life manual', 'John Sonmez','U');
 
 INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('El monstruo de colores', 'Anna Llenas', 'Y');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Adivina cu·nto te quiero','Sam McBratney y Anita Jeram', 'Y');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('La pequeÒa oruga glotona', 'Eric Cale', 'Y');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('øA quÈ sabe la luna?', 'Michael Grejniec', 'Y');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Adivina cu√°nto te quiero','Sam McBratney y Anita Jeram', 'Y');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('La peque√±a oruga glotona', 'Eric Cale', 'Y');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('¬øA qu√© sabe la luna?', 'Michael Grejniec', 'Y');
 INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Elmer', 'David McKee', 'Y');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('El topo que querÌa saber quiÈn se habÌa hecho aquello en su cabeza', 'Werner Holzwarth y Wolf Erlbruch', 'Y');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Un libro', 'HervÈ Tullet', 'Y');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Por cuatro esquinitas de nada', 'JÈrÙme Ruillier', 'Y');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('El topo que quer√≠a saber qui√©n se hab√≠a hecho aquello en su cabeza', 'Werner Holzwarth y Wolf Erlbruch', 'Y');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Un libro', 'Herv√© Tullet', 'Y');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('Por cuatro esquinitas de nada', 'J√©r√¥me Ruillier', 'Y');
 INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('La ovejita que vino a cenar', 'Steve Smallman y Joelle Dreidemy', 'Y');
-INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('La cebra Camila', 'Marisa NuÒez y ”scar Vill·n', 'Y');
+INSERT INTO tLibro(TITULO, AUTOR, ID_Materia) VALUES('La cebra Camila', 'Marisa Nu√±ez y √ìscar Vill√°n', 'Y');
 
 GO
