@@ -129,25 +129,25 @@ public class PanelBiblioteca extends JPanel {
         return TFautor.getText();
     }
     
-    public Materia getMaterias() {
-		return materias.getSelectedValue();
-	}
+    public Materia getMateria() {
+	return materias.getSelectedValue();
+    }
 
-	public void setMaterias(JList<Materia> materias) {
-		this.materias = materias;
-	}
-
-
-
-	public Libro getLibros() {
-		return libros.getSelectedValue();
-	}
+    public void setMaterias(JList<Materia> materias) {
+	this.materias = materias;
+    }
 
 
 
-	public void setLibros(JList<Libro> libros) {
-		this.libros = libros;
-	}
+    public Libro getLibro() {
+        return libros.getSelectedValue();
+    }
+
+
+
+    public void setLibros(JList<Libro> libros) {
+	this.libros = libros;
+    }
 	
 	
 }
